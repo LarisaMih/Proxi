@@ -24,9 +24,9 @@ public class MessageController {
         );
 String allResponse = objectMapper.writeValueAsString(response);
        String nameSport = JsonPath.read(allResponse,"sport.name");
-       Sport entity = new Sport();
-       entity.setSport(nameSport);
-        return entity;
+       Sport sport = new Sport();
+       sport.setSport(nameSport);
+        return sport;
     }
 //
 
