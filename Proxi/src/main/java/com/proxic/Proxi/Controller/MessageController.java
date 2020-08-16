@@ -28,6 +28,6 @@ String allResponse = objectMapper.writeValueAsString(response);
        entity.setSport(nameSport);
         return entity;
     }
-
+//
 
 }
