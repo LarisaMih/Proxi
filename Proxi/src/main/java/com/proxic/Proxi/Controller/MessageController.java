@@ -17,17 +17,25 @@ import org.springframework.web.client.RestTemplate;
 public class MessageController {
 
     @GetMapping("/olimp/{id}")
-    public Object sport(@PathVariable("id")String id) throws InterruptedException, JsonProcessingException {
-        RestTemplate restTemplate= new RestTemplate();
-        ObjectMapper objectMapper = new ObjectMapper();
-        Hran response = restTemplate.getForObject("https://www.olimp.bet/apiru/live/sport?id="+id,Hran.class
+    public Object sportAll(@PathVariable("id") String id) throws InterruptedException, JsonProcessingException {
+        RestTemplate restTemplate = new RestTemplate();
+        Hran response = restTemplate.getForObject("https://www.olimp.bet/apiru/live/sport?id=" + id, Hran.class
         );
-String allResponse = objectMapper.writeValueAsString(response);
-       String nameSport = JsonPath.read(allResponse,"sport.name");
-       Sport sport = new Sport();
-       sport.setSport(nameSport);
+        return response;
+    }
+
+
+    @GetMapping("/olimp1/{id}")
+    public Object sportName(@PathVariable("id") String id) throws InterruptedException, JsonProcessingException {
+        RestTemplate restTemplateName = new RestTemplate();
+        ObjectMapper objectMapper = new ObjectMapper();
+        Hran response = restTemplateName.getForObject("https://www.olimp.bet/apiru/live/sport?id=" + id, Hran.class
+        );
+        String allResponse = objectMapper.writeValueAsString(response);
+        String nameSport = JsonPath.read(allResponse, "sport.name");
+        Sport sport = new Sport();
+        sport.setSport(nameSport);
         return sport;
     }
-//
 
 }
