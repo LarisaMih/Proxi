@@ -1,7 +1,7 @@
 package com.proxic.Proxi.Entity;
 
 public class Sport {
-String sport;
+     String sport;
 
     public Sport() {
 
